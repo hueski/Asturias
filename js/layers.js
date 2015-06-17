@@ -45,7 +45,7 @@ function asignarNombre(layer) {
 
 }
 
-/*
-$('#menufeatures li > ul').click(function () {
+
+$('#menufeatures li > fieldset').click(function () {
 	$(this).siblings('fieldset').toggle();
-}).siblings('fieldset').hide();*/
+}).siblings('fieldset').hide();

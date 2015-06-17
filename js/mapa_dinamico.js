@@ -1,9 +1,11 @@
 // JavaScript Document
+$(document).ready(function(){
+   init();
+});
 var layers=[];
 var grupos=[];
 var map;
 var geoserver="";
-
 
 function seleccionar_geoserver(wms)
 {	
@@ -13,9 +15,12 @@ function seleccionar_geoserver(wms)
 		crear_menu();
 	}
 	else
-	{
-		var formulario_wms = "<form>Introduzca direccion wms <textarea  id=\"wms\"  /></form><button onclick='seleccionar_wms()'id='enviar'>Enviar wms</button>";
-		 $('#layertree').empty().append(formulario_wms);
+	{		var formulario_wms= "<div id=\"addCapas\">"+
+								"<label>Introduzca Wms:</label>"+
+								"<input type=\"text\"  id=\"wms\"/>"+
+								"<button onclick='seleccionar_wms()' id=\"botonInsertar\" class=\"btn btn-primary \">Buscar Capas</button>"
+		//var formulario_wms = "<form>Introduzca direccion wms <textarea  id=\"wms\"  /></form><button onclick='seleccionar_wms()'id='enviar'>Enviar wms</button>";
+		 $('#menugeo').empty().append(formulario_wms);
 		 
 	}
 	
@@ -32,8 +37,6 @@ function seleccionar_wms()
 		}
 		
 }
-
-
 
 function init()
 {
@@ -80,16 +83,34 @@ $.ajax({
 				grupos.push(capability.Layer.Layer[i].Abstract)
 				
             }
-		//console.log(c);
+		console.log(c);
        //en este bucle divido las capas obtenidas en el GetCapabilities en grupos de capas y capas sueltas
 
-		var codigogrupos="<h3>Grupos</h3>";
-		var codigocapas="<h3>Capas</h3>";
+		var codigocapas="<div id=\"addCapas\">"+
+						"<label>Capas disponibles:</label>"+
+  						"<input type=\"text\" list=\"capas\" id=\"nombrecapa\"/>"+
+						"<button onclick='addLayer()' id=\"botonInsertar\" class=\"btn btn-primary \">Insertar capa</button>"+
+						"<datalist id=\"capas\">"
+  						
 			for(var j = 0; j < layers.length; j ++)
 				{
 					//if(!grupos[j]){
-							codigocapas += "<button onclick='addLayer("+j+")'>"+layers[j]+"</option>" ;
-							
+						
+							codigocapas += "<option value='"+layers[j]+"'>";
+						
+
+		var codigogrupos="<h3>Grupos</h3>";
+		/*var codigocapas="<div class=\"btn-group\">"+
+  						"<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">"+
+						"Titulo del boton <span class=\"caret\"></span>"+
+  						"</button>"+
+						"  <ul class=\"dropdown-menu\" role=\"menu\">";
+			for(var j = 0; j < layers.length; j ++)
+				{
+					//if(!grupos[j]){
+						
+							codigocapas += "<li><a onclick=\"addLayer("+j+")\">"+layers[j]+"</a></li>";
+						*/	
 						/*}
 					else
 						{	
@@ -98,8 +119,8 @@ $.ajax({
 				}
 			
 		//	codigogrupos +="</select>";
-		//	codigocapas +="</select>";
-			 $('#layertree').empty().append(codigocapas);
+			codigocapas +="</datalist></div>";
+			 $('#menugeo').empty().append(codigocapas);
 			// $('#layertree2').empty().append(codigogrupos);
 		
 			
@@ -108,7 +129,7 @@ $.ajax({
 	
 }
 
-
+/*
 function addGroup(j)
 {	
 	var nombre=layers[j];
@@ -130,34 +151,26 @@ function addGroup(j)
 	initializeTree();
 	asignarNombre(map.getLayerGroup());	
 }
+		*/
 		
-		
-function addLayer(j){
-	
-	var nombre=layers[j];
+function addLayer(){
+	var capa=document.getElementById("nombrecapa").value;
     var newlayer = new ol.layer.Tile({
 			source: new ol.source.TileWMS({
 			preload: Infinity,
 			url: geoserver,
-			serverType:'geoserver',
 			params:{
-						'LAYERS':""+nombre+"", 'TILED':true
+						'LAYERS':""+capa+"", 'TILED':true
 				}
 			//name:""+nombre+""
 			}),
-			name:""+nombre+""
+			name:""+capa+""
             });
 	
 	map.addLayer(newlayer);
 	map.getLayerGroup().set('name', 'Root');	 
 	
-	initializeTree();
-/*	console.log("esto va antes del asignar");
-	//asignarNombre(map.getLayerGroup())
-   			var capas = map.getLayers().getArray(),
-   			len = capas.length;
-			for ( var i = len-1 ; i >= 0; i--) {
-								
-     					asignarNombre(capas[i]);
-                  }*/
+	updateTreeLayer();
+	
+
 }

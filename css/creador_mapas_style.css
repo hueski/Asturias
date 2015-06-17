@@ -1,0 +1,152 @@
+#logo{
+    margin-bottom: 7px;
+}
+
+#map{
+    height: 85vh;
+}
+
+#logo img{
+    height: 12vh;
+    width: 100%;
+}
+
+#leftBar{
+    height: 85vh;
+    background-color: lightgray
+}
+
+#mapInsert{
+    height: 20vh;
+    padding-top: 15%;
+    text-align: center
+}
+
+#mapInsertText{
+    margin-bottom: 10%
+}
+
+/*.separator{
+    height: 2px;
+    background-color: darkblue;
+    margin-top: 5px;
+    margin-bot: 5px;
+}*/
+
+#saveMapButton{
+    width: 80%;
+}
+
+#cancelMapButton{
+    width: 20%;
+}
+
+#logout{
+    margin-top: 20px;
+    text-align: center;
+}
+
+#layersTree{
+    height: 67vh;
+	overflow:auto;
+}
+
+#mapContainer{
+    padding-top: 2vh;
+}
+
+#allTools{
+    height: 11.5vh;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: #eee
+}
+
+.functionsBar{
+    height: 10vh;
+    width: 992px;
+    background-color:beige;
+    position: absolute;
+    top: 250px;
+    left: 250px;
+    z-index: 1
+}
+
+#areaZoom{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/areazoom.png");
+    background-repeat:no-repeat;
+}
+
+#clickCoordinatesButton{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/coordinates.png");
+    background-repeat:no-repeat;
+}
+
+#dataRetrieving{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/retrieveData.png");
+    background-repeat:no-repeat;
+}
+
+#drawType{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/draw.png");
+    background-repeat:no-repeat;
+}
+
+#fullScreen{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/fullScreen.png");
+    background-repeat:no-repeat;
+}
+
+#panTo{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/panTo.png");
+    background-repeat:no-repeat;
+}
+
+
+#printMap{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/printMap.png");
+    background-repeat:no-repeat;
+}
+
+#zoomInButton{
+    cursor: pointer;
+    height: 64px;
+    width: 64px;
+    background-image:url("../templates/images/zoomIn.png");
+    background-repeat:no-repeat;
+}
+
+#zoomOutButton{
+     cursor: pointer;
+     height: 64px;
+     width: 64px;
+     background-image:url("../templates/images/zoomOut.png");
+     background-repeat:no-repeat;
+ }
+ #botonInsertar{
+    margin-left:10px;
+}
+#addCapas{
+	margin-top:20px;
+}

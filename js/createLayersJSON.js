@@ -1,7 +1,7 @@
 var ajaxQueue = [];
 var numLayers;
 var indexLayer;
-var div_html = "";
+var div_html = "<ul class='menu'>";
 
 function initializeTree() {
 	div_html = "";
@@ -26,13 +26,15 @@ function generateJSONLayers(layer) {
 			{
 					id=separar[0];
 			}
-		console.log(name);
+		//console.log(name);
 		div_html += "<li>"+
   						 	"<fieldset id='layer"+id+"'>" +
 						  	"<label class='checkbox' for='layer"+id+"'>" +
 						 	 "<input id='layer"+id+"' class='visible' type='checkbox'/>"+name+" "+
 			  				"</label>"+
 							"</fieldset>"
+		var legend=create_legend(layer);
+		div_html +=legend;
 
 		if (layerAttributes) {
 			features = layerAttributes;
@@ -50,7 +52,8 @@ function getJSONLayer(layer, callback) {
 		callback(parseDescribeFeatureType(response));
 		indexLayer++;
 		if (indexLayer == numLayers){
-			$('#menufeatures').empty().append(div_html);
+			div_html += "</ul>";
+			$('#layersTree').empty().append(div_html);
 			asignarNombre(map.getLayerGroup());
 		}
 	});
