@@ -13,7 +13,7 @@ function menu_localgis()
 					var nombre= objeto[i].mapName[0];
 					var id = objeto[i].id_map;
 					//console.log(nombre+"  "+id);
-					codigo_menu_localgis +="<button class='menu_local' onclick=seleccion_mapa("+id+")>"+nombre+"</button>";
+					codigo_menu_localgis +="<button class='menu_local' onclick=seleccion_mapa("+id+","+nombre+")>"+nombre+"</button>";
 					
 				}
 					$('#layertree').empty().append(codigo_menu_localgis);
@@ -30,13 +30,20 @@ error: function() {
 }
 
 
-function seleccion_mapa(id)
+function seleccion_mapa(varid,varnombre)
 {
+	
 	console.log(id);
 	$.ajax({
 type: "POST",
 url: "destino.php",
-	data: id,
+	data:
+	{
+		nombre: varnombre,
+		id:varid,
+		
+		
+	},
 	success: function(response){
 		
 		}
