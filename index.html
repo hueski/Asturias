@@ -4,20 +4,19 @@
         <title>Hello Map</title>
         <link href="./bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="./css/creador_mapas_style.css" rel="stylesheet" media="screen">
+        <link rel='stylesheet' href='v3.4.0/css/ol.css'>
+        <link rel='stylesheet' href='chosen/chosen.css'>
         <!-- Scripts go here -->
     	<script src="v3.4.0/build/ol.js" type="text/javascript"></script>
-        <link rel='stylesheet' href='v3.4.0/css/ol.css'>
         <!-- Añado aqui un link para usar jquery, ya que para algunos pasos del tutorial era necesario -->
         <script src='http://code.jquery.com/jquery-1.11.1.js'></script>
         <script src='./js/mapa_dinamico.js'></script>
-        <script src='./js/layers.js'></script>
-        <script src='./js/createLayersJSON.js'></script>
-        <script src='./js/xmlToJSON.js'></script>
         <script src='./js/importmapLocalgis.js'></script>
         <script src='./js/createLegend.js'></script>
         <script src='./js/createLayerTreeMap.js'></script>
         <script src='./js/bootstrap-treeview.js'></script>
         <script src="./bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+        <script src="chosen/chosen.jquery.js"></script>
     </head>
     
     <body>
@@ -28,7 +27,7 @@
                                     
                                         <div>
                                             <div id="logo" class="">
-                                                <img src="./images/cabeceraLogoAsturias.gif">
+                                                <img src="images/cabeceraLogoAsturias.gif">
                                             </div>
                                             <div id="leftBar">
 
@@ -60,8 +59,9 @@
                                                             <button onclick='menu_localgis()' class="btn btn-primary btn-block">Importar mapa</button>
                                                     </div>
                                                     
-                                                   	<div id="menugeo" class="col-md-10" >
-                                                       
+                                                   	<div class="col-md-10" >
+                                                       <div class="row" id="menugeo"></div>
+                                                       <div class="row" id="menugeo2"></div>
                                                     </div>
                                     
                                         </div>

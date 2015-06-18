@@ -148,5 +148,15 @@
     margin-left:10px;
 }
 #addCapas{
-	margin-top:20px;
+	margin-top:15px;
+	
+}
+
+#addGrupos{
+	margin-top:10px;
+	
+}
+#listLayers
+{
+	overflow:auto;
 }
