@@ -138,6 +138,7 @@ function addGroup()
 }	
 		
 function addLayer(){
+	console.log(geoserver)
 	var capa=document.getElementById("nombrecapa").value;
     var newlayer = new ol.layer.Tile({
 			source: new ol.source.TileWMS({

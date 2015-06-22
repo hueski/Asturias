@@ -8,7 +8,7 @@ function updateTreeLayer(){
 }
 
 function generateNode(layer){
-	console.log(layer.name);
+	//console.log(layer.name);
     var node = {text: layer.n.name, nodes: [], layer: layer, state: {checked: true}};
     if (layer instanceof ol.layer.Group){
         layer.getLayers().forEach(function(subLayer, indexInGroup){

@@ -3,7 +3,9 @@ var codigo_menu_localgis="";
 
 function menu_localgis()
 {
-	codigo_menu_localgis="<h4>Seleccione el mapa que desea importar.</h4>";
+		codigo_menu_localgis=		"<div id=\"addMapa\">"+
+									"<select data-placeholder=\"Seleccione un Mapa\" id=\"nombreMapa\" class=\"chosen-select\" style=\"width:350px;\" tabindex=\"1\">"+
+						 			"<option value=\"\"></option>";
 	$.ajax({type: "GET",url: "php/localgisMaps.php",success: function(response) {
 
 		var objeto=JSON.parse(response);
@@ -12,14 +14,18 @@ function menu_localgis()
 					
 					var nombre= objeto[i].mapName[0];
 					var id = objeto[i].id_map;
-					//console.log(nombre+"  "+id);
-					codigo_menu_localgis +="<button class='menu_local' onclick=seleccion_mapa("+id+","+nombre+")>"+nombre+"</button>";
+					
+					codigo_menu_localgis +="<option value=\"[&quot;"+nombre+"&quot;,"+id+"]\">"+nombre+"</option>";
 					
 				}
+					codigo_menu_localgis +="</select><button onclick='seleccion_mapa()' id=\"botonInsertar\" class=\"btn btn-primary \">Importar Mapa</button></div>";
+					$('#menugeo2').empty()
 					$('#menugeo').empty().append(codigo_menu_localgis);
+					$('.chosen-select').chosen({width:"50%"});
 					},
 error: function() {
 					var error="<h1>Algo ha funcionado mal</h1>";	
+					$('#menugeo2').empty()
 					 $('#menugeo').empty().append(error);
 					 
 }
@@ -27,14 +33,16 @@ error: function() {
 }
 
 
-function seleccion_mapa(varid,varnombre)
+function seleccion_mapa()
 {
+	var pruebas=document.getElementById("nombreGrupo").value;
+	var variables=JSON.parse(pruebas);
 	$.ajax({
-type: "POST",
-url: "destino.php",
-data:{
-		nombre: varnombre,
-		id: varid,
+		type: "POST",
+		url: "destino.php",
+		data:{
+		nombre: variables[0],
+		id: variables[1],
 		},
 	success: function(response){
 		
